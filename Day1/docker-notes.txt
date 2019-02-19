@@ -1,0 +1,63 @@
+You can check for useful blog here
+http://www.tektutor.org/blog/
+
+Installing Docker in Ubuntu
+apt update && apt install -y docker-ce
+
+Listing all docker images present in Docker local registry
+docker images
+
+Listing containers that are running currently
+docker ps
+
+Listing all containers irrespective their running state
+docker ps -a
+
+Listing only currently running container ids
+docker ps -q
+
+Listing all containers id irrespective their running state
+docker ps -aq
+
+Creating and running a new container in foreground/interactive mode
+docker run -it --name ubuntu1 --hostname ubuntu1 ubuntu /bin/bash
+
+Creating and running a new container in background/daemon mode
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu /bin/bash
+
+Finding more details about docker image
+docker image inspect ubuntu
+
+Find more details about docker container
+docker inspect ubuntu1
+
+Finding ip address of a container
+docker inspect ubuntu1 | grep IPA
+docker inspect -f {{.NetworkSetting.IPAddress}} ubuntu1
+
+docker exec -it ubunt1 bash
+hostname -i
+
+Stopping a container
+docker stop ubuntu1
+
+Starting an existing container
+docker start ubuntu1
+
+Removing a container
+docker stop ubuntu1 && docker rm ubuntu1
+
+Removing a container without stopping forcefully
+docker rm -f ubuntu1
+
+Deleting an image
+docker rmi ubuntu
+
+Deletaing an image forcefully without deleting its containers
+docker rmi -f ubuntu
+
+Building a docker image from a Dockerfile
+docker build -t tektutor/ansible-ubuntu .
+
+
+

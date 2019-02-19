@@ -1,0 +1,5 @@
+1. Ansible Control Machine - retrieves the server credentials from inventory file.
+2. Makes a connection (SSH/WinRM)
+3. Copies the Ansible Modules (Python/Powershell scripts) from Ansible Control Machine to remote server
+4. Executes the python scripts on remote machines, clean ups any folders, temp files that was created.
+5. Gives a summary of the response on the ACM (Ansible Control Machine)

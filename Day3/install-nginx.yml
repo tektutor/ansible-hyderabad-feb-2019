@@ -5,13 +5,23 @@
     - provisioner_tool: Docker
     - cm_tool: Ansible
   tasks:
-    - name: Install nginx web server
+    - name: Install nginx web server in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
       apt: name=nginx state=latest update_cache=yes
+
+    - name: Install Extra Packages for Enterprise Linux (EPEL) in CentOS
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=epel-release state=latest 
+
+    - name: Install nginx web server in CentOS
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=nginx state=latest 
 
     - name: Create Document Root Folder
       file: path=/var/html state=directory mode=0777
 
     - name: Configure nginx document root folder
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
       copy: src=default dest=/etc/nginx/sites-available/default backup=yes
 
     - name: Restart the nginx web server

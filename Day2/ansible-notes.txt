@@ -1,0 +1,23 @@
+Running an ansible ad-hoc command
++++++++++++++++++++++++++++++++++
+ansible -i hosts all -m ping
+ansible -i hosts all -m shell -a "uptime"
+ansible -i hosts all -m shell -a "service nginx status"
+ansible -i hosts all -m setup
+
+Finding the ip address of a Docker container using ansible ad-hoc command
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ansible -i hosts ubuntu1 -m shell -a "hostname -i"
+
+Running an ansible ad-hoc command with verbosity enabled
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ansible -i hosts all -m setup -vvvv
+
+Running an ansible playbook
++++++++++++++++++++++++++++
+ansible-playbook -i hosts ping.yml
+ansible-playbook -i hosts install-nginx.yml
+
+Running an ansible playbook with verbosity enabled
+++++++++++++++++++++++++++++++++++++++++++++++++++
+ansible-playbook -i hosts install-nginx.yml -vvvv

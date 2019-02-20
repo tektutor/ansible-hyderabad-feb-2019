@@ -59,5 +59,15 @@ docker rmi -f ubuntu
 Building a docker image from a Dockerfile
 docker build -t tektutor/ansible-ubuntu .
 
+Listing all docker network objects
+docker network ls
 
+Create a new docker network of type bridge
+docker network create tektutor-network-1
+
+Create a new container and connect it to tektutor-network-1
+docker run -dit --name ubuntu1 --hostname --network=tektutor-network-1 ubuntu bash
+
+Connect an already running container to a network
+docker network connect tektutor-network-1 ubuntu2
 

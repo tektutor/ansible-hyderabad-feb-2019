@@ -1,0 +1,37 @@
+- name: This playbook will build ansible ubuntu and centos images
+  hosts: localhost
+  vars:
+    - ubuntu_image_name: "tektutor/ansible-ubuntu"
+    - centos_image_name: "tektutor/ansible-centos"
+  tasks:
+    - name: Install python pip utility
+      apt: name=python-pip state=latest update_cache=yes
+
+    - name: Install docker-py python library/package
+      shell: pip install docker-py
+
+    - name: Remove all existing containers
+      shell: docker rm -f $(docker ps -aq)
+      ignore_errors: yes
+
+    - name: Delete the existing Ansible Ubuntu image
+      shell: "docker rmi {{ubuntu_image_name}}"
+      ignore_errors: yes
+
+    - name: Delete the existing Ansible CentOS image
+      shell: "docker rmi {{centos_image_name}}"
+      ignore_errors: yes
+
+    - name: Build Ansible ubuntu image
+      docker_image:
+          - name: "{{ubuntu_image_name}}"
+            state: build
+            dockerfile: UbuntuDockerfile
+            path: . 
+
+    - name: Build Ansible centos image
+      docker_image:
+          - name: "{{centos_image_name}}"
+            state: build
+            dockerfile: CentOSDockerfile
+            path: . 

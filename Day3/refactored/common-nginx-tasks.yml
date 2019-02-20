@@ -1,0 +1,8 @@
+- name: Create Document Root Folder
+  file: path=/var/html state=directory mode=0777
+
+- name: Restart the nginx web server
+  shell: service nginx restart
+
+- name: Deploy web page into nginx web server
+  template: src=index.html.j2 dest=/var/html/index.html

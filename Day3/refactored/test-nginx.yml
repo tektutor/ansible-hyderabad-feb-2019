@@ -1,0 +1,6 @@
+- name: Install curl utility
+  apt: name=curl state=latest update_cache=yes
+
+- name: Test if the nginx web server is up and running 
+  shell: "curl http://localhost:{{item}}"
+  with_sequence: start=8001 end=8004

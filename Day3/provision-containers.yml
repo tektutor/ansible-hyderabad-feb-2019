@@ -1,0 +1,27 @@
+- name: This playbook will create couple of ubuntu and centos ansible containers
+  hosts: localhost
+  vars:
+    - ubuntu_image_name: "tektutor/ansible-ubuntu"
+    - centos_image_name: "tektutor/ansible-centos"
+  tasks:
+    - name: Create Ansible ubuntu containers
+      docker_container:
+          image: "{{ubuntu_image_name}}" 
+          name:  "ubuntu{{item}}"
+          hostname: "ubuntu{{item}}" 
+          state: started
+          ports:
+            - "200{{item}}:22"
+            - "800{{item}}:80"
+      with_sequence: start=1 end=2
+
+    - name: Create Ansible centos containers
+      docker_container:
+          image: "{{centos_image_name}}" 
+          name:  "centos{{item}}"
+          hostname: "centos{{item}}" 
+          state: started
+          ports:
+            - "300{{item}}:22"
+            - "900{{item}}:80"
+      with_sequence: start=1 end=2

@@ -24,14 +24,14 @@
 
     - name: Build Ansible ubuntu image
       docker_image:
-          - name: "{{ubuntu_image_name}}"
-            state: build
-            dockerfile: UbuntuDockerfile
-            path: . 
+           name: "{{ubuntu_image_name}}"
+           state: build
+           dockerfile: UbuntuDockerfile
+           path: . 
 
     - name: Build Ansible centos image
       docker_image:
-          - name: "{{centos_image_name}}"
-            state: build
-            dockerfile: CentOSDockerfile
-            path: . 
+           name: "{{centos_image_name}}"
+           state: build
+           dockerfile: CentOSDockerfile
+           path: . 

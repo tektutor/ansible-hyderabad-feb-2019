@@ -1,0 +1,4 @@
+- name: Restart Apache Tomcat app server in Ubuntu
+  command: service apache2 restart
+  listen:
+    - Restart Apache Tomcat app server in Ubuntu

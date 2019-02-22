@@ -1,0 +1,6 @@
+---
+- name: Configure and Grant permissions to Document Root Folder in CentOS
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf backup=yes
+  notify:
+    - Restart Apache Tomcat app server in CentOS
+...

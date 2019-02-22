@@ -1,0 +1,10 @@
+- name: Demonstrates a practical use of dictionary
+  hosts: localhost
+  vars:
+    - proxy_configurations:
+         http_proxy: http://proxy.tektutor.org:8080
+         https_proxy: https://proxy.tektutor.org:8080
+  tasks:
+     - name: Install network packages
+       apt: name=net-tools state=latest update_cache=yes
+       environment: "{{proxy_configurations}}"

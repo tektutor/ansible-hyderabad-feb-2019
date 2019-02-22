@@ -1,0 +1,7 @@
+---
+- name: Create the Apache Tomcat Document Root Folder
+  file: path=/var/html state=directory mode=0777
+
+- name: Deploy custom web page into Apache Tomcat
+  template: src=index.html.j2 dest=/var/html/index.html
+...

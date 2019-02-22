@@ -1,0 +1,17 @@
+- name: Demonstrates use of dictionary and navigating dictionary as a loop
+  hosts: localhost 
+  vars:
+    - contacts:
+         Nitesh:
+            name: Nitesh Jeganthan
+            mobile: 123-456-7890
+
+         Sriram:
+            name: Sriram Jeganathan
+            mobile: 343-352-5633
+  tasks:
+    - name: Print each contact details
+      debug: msg="{{item.value.name}} ===> {{item.value.mobile}}"
+      with_dict: "{{contacts}}"
+
+   

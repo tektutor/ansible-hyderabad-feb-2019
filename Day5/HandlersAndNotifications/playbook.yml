@@ -1,0 +1,11 @@
+- name: Demonstrates Handlers and Notifications
+  hosts: localhost
+  tasks:
+    - name: Task1
+      apt: name=vim state=latest update_cache=yes
+      notify:
+         - Handler1
+
+  handlers:
+    - name: Handler1
+      shell: echo "Handler 1 was invoked ..."

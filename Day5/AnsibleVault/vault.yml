@@ -1,0 +1,7 @@
+- name: This playbook will demonstrate accessing vault protected information
+  hosts: localhost
+  vars_files:
+     - credentials.yml
+  tasks:
+   - name: Print the credentials
+     debug: msg="Username ==> {{username}} and Password ==> {{password}}"

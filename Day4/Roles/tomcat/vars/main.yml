@@ -1,0 +1,5 @@
+---
+# vars file for tomcat
+provisioner_tool: Docker
+cm_tool: Ansible
+...

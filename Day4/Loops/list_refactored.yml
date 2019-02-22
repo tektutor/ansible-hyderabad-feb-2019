@@ -1,0 +1,13 @@
+- name: Demonstrates use of list variable and its navigation
+  hosts: all 
+  vars:
+    - software_tools:
+        - vim
+        - tree
+        - cscope
+        - net-tools
+        - iputils-ping
+  tasks:
+    - name: Install the list of software utilities
+      when: ansible_distribution == "Ubuntu"
+      apt: name="{{software_tools}}" state=latest update_cache=yes

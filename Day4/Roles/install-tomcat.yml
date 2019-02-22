@@ -1,0 +1,4 @@
+- name: This playbook will demonstrate invoking our tomcat role
+  hosts: all
+  roles:
+    - tomcat
